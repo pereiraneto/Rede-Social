@@ -1,9 +1,10 @@
 <div class="card" style="margin-top:10px;">
     <div class="card-header">
-        Post
+        Publicação
     </div>
     <div class="card-body">
-        <h5 class="card-title">{{nome}}</h5>
-        <p class="card-text">{{mensagem}}</p>
+        <h5 class="card-title" style="color:black;font-weight:bold;">{{post.nomePessoa}}</h5>
+        <p class="card-text" style="font-size:15px;">{{post.texto}}</p>
+        <button style="cursor:pointer; width: 10%;" (click)="incrementarLike()"><img style="width: 100%;" [src]="fotoLike"></button><span>{{post.qtdLikes}}</span>
     </div>
-</div>
+</div> 
