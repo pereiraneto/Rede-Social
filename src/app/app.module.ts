@@ -1,3 +1,4 @@
+import { PostService } from './post/post.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,9 +19,11 @@ import { LinhaDoTempoComponent } from "./linha-do-tempo/linha-do-tempo.component
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
-  providers: [],
+  providers: [
+    PostService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

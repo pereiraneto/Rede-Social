@@ -1,10 +1,12 @@
 <div class="card" style="margin-top:10px;">
-    <div class="card-header">
-        Publicação
-    </div>
     <div class="card-body">
+        <img (click)="deletarPost(post.id)" [src]="imgExcluir" style="width: 3%;border: none;cursor: pointer;float: right;" alt="Excluir Post">
         <h5 class="card-title" style="color:black;font-weight:bold;">{{post.nomePessoa}}</h5>
         <p class="card-text" style="font-size:15px;">{{post.texto}}</p>
-        <button style="cursor:pointer; width: 10%;" (click)="incrementarLike()"><img style="width: 100%;" [src]="fotoLike"></button><span>{{post.qtdLikes}}</span>
+        <hr>
+        <div>
+            <img style="width: 4%;margin-right: -10px;" [src]="iconeCurtido"> <span style="font-size:12px;">{{post.qtdLikes}}</span>
+        </div>
+        <img (click)="incrementarLike(post)" style="cursor:pointer; width: 10%; border:none;" [src]="fotoLike">
     </div>
 </div> 
