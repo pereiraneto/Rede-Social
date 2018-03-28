@@ -1,3 +1,4 @@
+import { PageComponent } from './page/page.component';
 import { LinhaDoTempoComponent } from './linha-do-tempo/linha-do-tempo.component';
 import {RouterModule, Routes} from '@angular/router';
 import { PostInputComponent } from "./post/post-input.component";
@@ -14,7 +15,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'postar',
-        component: PostInputComponent
+        component: PageComponent
     }
 ];
 

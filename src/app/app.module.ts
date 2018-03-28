@@ -10,6 +10,7 @@ import { NavigatorComponent } from "./navigator/navigator.component";
 import { PostComponent } from "./post/post.component";
 import { LinhaDoTempoComponent } from "./linha-do-tempo/linha-do-tempo.component";
 import { PostInputComponent } from 'app/post/post-input.component';
+import { PageComponent } from './page/page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PostInputComponent } from 'app/post/post-input.component';
     NavigatorComponent,
     PostComponent,
     LinhaDoTempoComponent,
-    PostInputComponent
+    PostInputComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,

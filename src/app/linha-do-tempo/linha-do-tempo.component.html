@@ -1,1 +1,1 @@
-<app-post *ngFor="let post of posts" [post]="post" (recebeuLike)="capturaEvent($event)"></app-post>
+<app-post *ngFor="let post of posts" [post]="post" (recebeuLike)="incrementarLike(post)"></app-post>

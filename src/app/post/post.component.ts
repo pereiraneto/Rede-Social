@@ -19,7 +19,7 @@ export class PostComponent{
     ){}
 
     incrementarLike(post:Post):void{
-        this.postService.addLike(post);
+        this.recebeuLike.emit(post);
     }
 
     deletarPost(id: number):void{
