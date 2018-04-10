@@ -1,13 +1,13 @@
-<div class="card" style="margin-top:10px;">
+<div class="card col-md-4" style="margin: 1%; width:31.3%; float: left;">
     <div class="card-body">
-        <img (click)="deletarPost(post)" [src]="imgExcluir" style="width: 3%;border: none;cursor: pointer;float: right;" alt="Excluir Post">
-        <a [routerLink]="['/postar', post.id]">editar</a>
+        <img (click)="deletarPost(post)" [src]="imgExcluir" style="width: 7%;border: none;cursor: pointer;float: right;" alt="Excluir Post">
         <h5 class="card-title" style="color:black;font-weight:bold;">{{post.nomePessoa}}</h5>
         <p class="card-text" style="font-size:15px;">{{post.texto}}</p>
         <hr>
         <div>
-            <img style="width: 4%;margin-right: -10px;" [src]="iconeCurtido"> <span style="font-size:12px;">{{post.qtdLikes}}</span>
+            <img style="width: 10%;margin-right: -10px;" [src]="iconeCurtido"> <span style="font-size:12px;">{{post.qtdLikes}}</span>
         </div>
-        <img (click)="incrementarLike(post)" style="cursor:pointer; width: 10%; border:none;" [src]="fotoLike">
+        <img [src]="editar" style="cursor:pointer; float:right; width: 10%; padding: 3px;" [routerLink]="['/postar', post.id]">
+        <img (click)="incrementarLike(post)" style="cursor:pointer; width: 20%; border:none;" [src]="fotoLike">
     </div>
 </div> 

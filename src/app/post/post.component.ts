@@ -13,6 +13,7 @@ export class PostComponent{
     fotoLike: string = "../../assets/facebook-velho-botao-curtir.png";
     imgExcluir: string = "../../assets/delete-icon.png";
     iconeCurtido: string = "../../assets/JD-22-128.png";
+    editar: string = "../../assets/download.png";
     posts: Post[];
 
     constructor(

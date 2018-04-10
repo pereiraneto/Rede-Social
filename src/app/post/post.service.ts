@@ -1,13 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Post} from './post.model';
 import {Http, Response, Headers} from '@angular/http';
-// import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs';
-// // import {ServiceInterface} from './../interfaces/service.interface';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { error } from 'selenium-webdriver';
+// import { error } from 'selenium-webdriver';
 
 @Injectable()
 export class PostService{

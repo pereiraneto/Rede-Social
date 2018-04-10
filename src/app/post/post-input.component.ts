@@ -27,11 +27,14 @@ export class PostInputComponent implements OnInit{
         
         this.route.params.forEach((params: Params) => {
             let id: number = params['id'];
-            if(id){                
+            if(id){
+                
                 this.isNew = false;
                 this.postService.find(id)
                 .subscribe((post: Post) => {
-                    this.post = post;                    
+                    this.post = post;
+                    this.nomePessoa = post.nomePessoa;
+                    this.texto = post.texto;                    
                 });                
             }
         });
@@ -40,8 +43,6 @@ export class PostInputComponent implements OnInit{
     submit(e){
         e.preventDefault();            
         if(this.isNew){
-            console.log(this.nomePessoa);
-            console.log(this.texto);
             this.newPost.emit(new Post(this.id, this.nomePessoa, this.texto, 0));
         }else{
             this.post.nomePessoa = this.nomePessoa;
