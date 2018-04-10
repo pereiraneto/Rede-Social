@@ -34,6 +34,12 @@ export class PostService{
                 .catch((error: Response) => Observable.throw(error))
     }
 
+    find(id: number){
+        return this.findAll()
+            .map((posts: Post[]) => posts.find(post => post.id === id))
+            .catch((error: Response) => Observable.throw(error));
+    } 
+
     create(post: Post){
         return this.http.post(this.contatosUrl, post)
         .map((response: Response) =>  response.json())

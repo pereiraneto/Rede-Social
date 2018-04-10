@@ -1,4 +1,3 @@
-import { EditarPostComponent } from './editar-post/editar-post.component';
 import { PageComponent } from './page/page.component';
 import { LinhaDoTempoComponent } from './linha-do-tempo/linha-do-tempo.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -20,7 +19,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'postar/:id',
-        component: EditarPostComponent
+        component: PageComponent
     }
 ];
 
