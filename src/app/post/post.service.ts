@@ -1,68 +1,61 @@
 import {Injectable} from '@angular/core';
 import {Post} from './post.model';
-// // import {Http, Headers, Response} from '@angular/http';
-// // import 'rxjs/add/operator/toPromise';
-// // import {Observable} from 'rxjs';
+import {Http, Response, Headers} from '@angular/http';
+// import { Observable } from 'rxjs/Observable';
+// import 'rxjs/add/operator/toPromise';
+import {Observable} from 'rxjs';
 // // import {ServiceInterface} from './../interfaces/service.interface';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { error } from 'selenium-webdriver';
 
 @Injectable()
 export class PostService{
 
-//     // private contatosUrl: string = 'app/contatos';
-//     // private headers: Headers = new Headers({'Content-Type': 'application/json'});
+    private contatosUrl: string = 'http://rest.learncode.academy/api/pereira/posts';
+    private headers: Headers = new Headers({'Content-Type': 'application/json'});
 
-    posts: Post[] = [
-        new Post(1, "Pereira", "Muito bom o jogo hoje", 10),
-        new Post(2, "Jackson", "Faltou mais gols", 8),
-        new Post(3, "UrubuMIlGRAU", "Alô TITE !! Vinicius Jr também é brasileiro !", 100)
-    ];
 
-//     // constructor(
-//     //     private http: Http
-//     // ){}
+    constructor(
+        private http: Http
+    ){}
 
-    findAll(): Post[]{
-        return this.posts;
+    posts: Post[] = [];
 
-        // return this.http.get(this.contatosUrl)
-        //     .toPromise() 
-        //     .then(response => response.json().data as Contato[])
-        //     .catch(this.handleError);
+    findAll(){
+        return this.http.get(this.contatosUrl)
+                .map((response: Response) => {
+                    this.posts = [];
+                    for(let p of response.json()){
+                        this.posts.push(new Post(p.id, p.nomePessoa, p.texto, p.qtdLikes))
+                    }
+                    return this.posts;
+                })
+                .catch((error: Response) => Observable.throw(error))
     }
 
-//     find(id: number): Promise<Contato>{
-//         return this.findAll()
-//             .then((contatos: Contato[]) => contatos.find(contato => contato.id === id));
-//     }  
-
-    create(post: Post): void{
-        this.posts.push(post);
-//         return this.http.post(this.contatosUrl, JSON.stringify(contato), {headers: this.headers})
-//         .toPromise()
-//         .then((response: Response) => {
-//             console.log(response.json().data);
-//             return response.json().data as Contato;
-//         })
-//         .catch(this.handleError);
+    create(post: Post){
+        return this.http.post(this.contatosUrl, post)
+        .map((response: Response) =>  response.json())
+        .catch((error: Response) => Observable.throw(error));
     }
 
-    addLike(post: Post): void{
+    addLike(post: Post){
         post.qtdLikes++;
+        return this.http.put(this.contatosUrl + '/' + post.id, post)
+            .map((res: Response) => res.text())
+            .catch((err: Response) => Observable.throw(err));
     }
 
-    delete(id: number): void{
-        for(let i = 0; i < this.posts.length; i++){
-            if(this.posts[i].id == id){
-                let index = this.posts.indexOf(this.posts[i]);                
-                this.posts.splice(index, 1);
-            }
-        }
+    update(post: Post) {
+        return this.http.put(this.contatosUrl + '/' + post.id, post)
+        .map((res: Response) => res.text())
+        .catch((err: Response) => Observable.throw(err));
+    }
 
-        // const url = `${this.contatosUrl}/${contato.id}`;
-        // return this.http
-        // .delete(url, {headers: this.headers})
-        // .toPromise()
-        // .then(() => contato as Contato)
-        // .catch(this.handleError);
+    delete(id: number){        
+        return this.http.delete(this.contatosUrl + "/" + id)
+        .map((response:Response) => response.text())
+        .catch((error: Response) => Observable.throw(error));
     }
 }

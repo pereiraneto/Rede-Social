@@ -1,6 +1,7 @@
 <div class="card" style="margin-top:10px;">
     <div class="card-body">
-        <img (click)="deletarPost(post.id)" [src]="imgExcluir" style="width: 3%;border: none;cursor: pointer;float: right;" alt="Excluir Post">
+        <img (click)="deletarPost(post)" [src]="imgExcluir" style="width: 3%;border: none;cursor: pointer;float: right;" alt="Excluir Post">
+        <a [routerLink]="['postar', post.id]">editar</a>
         <h5 class="card-title" style="color:black;font-weight:bold;">{{post.nomePessoa}}</h5>
         <p class="card-text" style="font-size:15px;">{{post.texto}}</p>
         <hr>

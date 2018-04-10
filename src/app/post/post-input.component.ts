@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from 'app/post/post.model';
-import { log } from 'util';
 import { PostService } from 'app/post/post.service';
 
 @Component({
@@ -9,6 +8,7 @@ import { PostService } from 'app/post/post.service';
 })
 export class PostInputComponent{
     @Output() newPost = new EventEmitter();
+    id:string;
     nomePessoa: string = "";
     texto: string = "";
 
@@ -17,13 +17,7 @@ export class PostInputComponent{
     ){}
 
     submit(e){
-        e.preventDefault();
-        let posts = this.postService.findAll();
-        let cont = 0
-        for(let i = 0; i < posts.length; i++){
-            cont++;
-        }
-        let newId = cont;        
-        this.newPost.emit(new Post(newId, this.nomePessoa, this.texto, 0));
+        e.preventDefault();       
+        this.newPost.emit(new Post(this.id, this.nomePessoa, this.texto, 0));
     }
 }

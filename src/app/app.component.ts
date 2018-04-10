@@ -1,4 +1,3 @@
-import { PostService } from './post/post.service';
 import { Post } from './post/post.model';
 import { Component } from '@angular/core';
 
@@ -10,12 +9,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   constructor(
-    private postService: PostService,
   ){}
 
-  addPost(post: Post){
-    console.log("isaopdjsaídjada");
-    
-    this.postService.create(post);
-  }
 }
